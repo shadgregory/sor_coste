@@ -1,0 +1,312 @@
+\documentclass[a4paper]{article}
+
+\begin{document}
+\section{31 Lessons and Exercises}
+By N. Coste
+\subsection{}
+Knowledge of the diatonic scale on the neck.
+
+\begin{lilypond}
+  \relative c' {
+    \set Score.timing = ##f
+    e,-0\6 f-1\6 g-3\6 a\5 b-2\5 c-3\5 d-0\4 e-2\4 f-3\4 g-0\3 a-2\3 b-0\2 c-1\2 d-4\2 e-0\1 f-1\1 g-3\1 a-1\1 b-3\1 c-4\1 d-1\1 e-3\1
+  }
+\end{lilypond}
+
+\subsection{First Lesson}
+Hold the notes throughout their value.
+
+\begin{lilypond}
+  melody = \relative c'' {
+    \time 2/4
+    \repeat volta 2 {
+    r4 c4 |
+    r4 d4 |
+    r4 e4-0 |
+    r4 f |%4
+    r4 g4 |
+    r4 d4 |
+    r4 c4 |
+    r2 |%8
+    }
+    \repeat volta 2 {
+    r4 b4-0 |
+    r4 c4 |
+    r4 d4 |
+    r4 e4 |%4
+    r4 c4 |
+    r4 d4 |
+    r4 b4 |
+    r4 c4 |%8
+    }
+  }
+  bass = \relative c' {
+    \time 2/4
+    \repeat volta 2 {
+    e2-2 |
+    f2-3 |
+    g2 |
+    a2-2 |%4
+    g2 | %5
+    f2-3 |
+    e2-2 |
+    c2-3 |
+    }
+    \repeat volta 2 {
+      d2-0 |
+      e2 |
+      f2 |
+      g2 |%4
+      e2 | %5
+      f2 |
+      d2 |
+      e2 | %8
+    }
+  }
+  music = {
+    <<
+    \override Staff.NoteCollision #'merge-differently-headed = ##t
+    \context Voice = "1" { \voiceOne \melody }
+    \context Voice = "2" { \voiceTwo \bass }
+    >>
+  }
+  \score {
+    \new Staff \music
+    \layout { }
+  }
+\end{lilypond}
+\subsection{Second Lesson}
+\begin{lilypond}
+  melody = \relative c'' {
+    \partial 4 g |
+    g2 c4-1 b |
+    b a d-4 c |
+    c-1 b g'-4 f-1 |
+    f-1 e c-1 a |
+    g2 c4-1 b |
+    b a-2 d-4 c-1 |
+    c-1 b e d-4 |
+    c2-1 r2 |
+  }
+  bass = \relative c' {
+    r4 |
+    r4 e2.-2|
+    f1-3 |
+    g1 |
+    a1-2 |
+    r4 e2.-2 |
+    f2-3 d2 |
+    g2 g,2-3 |
+    c2-3 r2 |
+  }
+  music = {
+    <<
+    \override Staff.NoteCollision #'merge-differently-headed = ##t
+    \context Voice = "1" { \voiceOne \melody }
+    \context Voice = "2" { \voiceTwo \bass }
+    >>
+  }
+  \score {
+    \new Staff \music
+    \layout { }
+  }
+\end{lilypond}
+
+\subsection{Scale}
+For the right hand, the fingering is indicated by a p for the thumb, m for the middle, and a for the annular.
+
+\begin{lilypond}
+  \relative c' {
+    c8-3\rightHandFinger #1 e,\rightHandFinger #1 f-1\rightHandFinger #1 g-3\rightHandFinger #1 a-1\rightHandFinger #1 b-2\rightHandFinger #1 c-3\rightHandFinger #1 d-0\rightHandFinger #1 |
+    e-2\rightHandFinger #2 g,-3\rightHandFinger #1 a\rightHandFinger #1 b-2\rightHandFinger #1 c-3\rightHandFinger #1 d-0\rightHandFinger #2 e-2\rightHandFinger #3 f-3\rightHandFinger #2 |
+    g-0\rightHandFinger #2 c,-3\rightHandFinger #1 d-0\rightHandFinger #1 e-2\rightHandFinger #1 f-3\rightHandFinger #1 g\rightHandFinger #2 a-2\rightHandFinger #3 b-0\rightHandFinger #2 |
+    c-1\rightHandFinger #3 e,-2\rightHandFinger #1 f-3\rightHandFinger #1 g-0\rightHandFinger #2 a-2\rightHandFinger #3 b-0\rightHandFinger #2 c-1\rightHandFinger #3 d-4\rightHandFinger #2 |
+    e-0\rightHandFinger #3 g,-0\rightHandFinger #2 a-2\rightHandFinger #3 b-0\rightHandFinger #2 c-1\rightHandFinger #3 d-4\rightHandFinger #2 e-2\rightHandFinger #3 f-1\rightHandFinger #2 |
+    g-4\rightHandFinger #3 c,-1\rightHandFinger #2 d-4\rightHandFinger #3 e\rightHandFinger #2 f-1\rightHandFinger #3 g-3\rightHandFinger #2 a-1\rightHandFinger #3 b-3\rightHandFinger #2 |
+    c4-4\rightHandFinger #3 b8-3\rightHandFinger #2 a-1\rightHandFinger #3 g-4\rightHandFinger #2 f-2\rightHandFinger #3 e-0\rightHandFinger #2 d\rightHandFinger #3 |
+    c\rightHandFinger #2 b\rightHandFinger #3 a\rightHandFinger #2 g\rightHandFinger #3 f\rightHandFinger #1 e d c |
+    b a g fis g gis a b |
+    c4 <c' e> <c e,> r |
+  }
+\end{lilypond}
+\subsection{Third Lesson}
+\begin{lilypond}
+  melody = \relative c'' {
+    \clef treble
+    c4-1 g'-4 e c |
+    b g a-2 b |
+    e c d e |
+    f2 e2 |%4
+    d2 c2 |
+    b4 g c-1 e|%6
+    d b g2 | %7
+    c4 g' e c |
+    b g a b |
+    c g d' g | %10
+    e c d e |
+    r4 f r4 e |
+    r4 d r4 c~-1 |
+    c g e' d-4 |
+    c2-1 |
+    
+  }
+  bass = \relative c' {
+    e1-2 |
+    f1-3|
+    c1-3|
+    r4 a'-2 r g|%4
+    r4 f-3 r e-2|%5
+    d f-3 e-2 c-3 |
+    g'2 r4 f4 |
+    e1 |
+    f1-3 |
+    e2-2 d2 |
+    c2-3 b4-2 bes-1|
+    a2 g2-3 |
+    f-1 fis-2 |
+    g1-3 |
+    c2-3 |
+  }
+  music = {
+    <<
+    \override Staff.NoteCollision #'merge-differently-headed = ##t
+    \context Voice = "1" { \voiceOne \melody }
+    \context Voice = "2" { \voiceTwo \bass }
+    >>
+  }
+  \score {
+    \new Staff \music
+    \layout { }
+  }
+\end{lilypond}
+\subsection{Scale}
+\begin{lilypond}
+  \relative c'' {
+    c8-1 c,-3\rightHandFinger #1 d\rightHandFinger #1 e-2\rightHandFinger #1 f-3\rightHandFinger #1 g\rightHandFinger #2 a-2\rightHandFinger #3 b\rightHandFinger #2 |
+    c-1\rightHandFinger #3 d-4\rightHandFinger #2 e-0\rightHandFinger #3 f-1\rightHandFinger #2 g-3\rightHandFinger #3 a-1\rightHandFinger #2 b-3\rightHandFinger #3 c-4\rightHandFinger #2 |
+    d-1\rightHandFinger #3 e-3\rightHandFinger #2 f-4\rightHandFinger #3 e-3\rightHandFinger #2 d-1\rightHandFinger #3 c-4\rightHandFinger #2 b-3\rightHandFinger #3 a-1\rightHandFinger #2 |
+    b-3\rightHandFinger #3 c-4\rightHandFinger #2 d-1\rightHandFinger #3 e-3\rightHandFinger #2 f-4 d-1 b-3 d-1 |
+    c4-4 r4 r2 |
+  }
+\end{lilypond}
+
+\begin{lilypond}
+  melody = \relative c'' {
+    \repeat volta 2 {
+      \partial 2 g'-2 c-2 |
+      b d f, g |
+      e g-4 c,-1 e |
+      d-4 f-1 b, d-4 |
+      c-1 e g-4 c |%5
+      b d f, g |
+      e g c, e |
+      d f b, d |
+      c2 |
+    }
+    \repeat volta 2 {
+      \partial 2 e4 g-4 |
+      f2 d'4 f, |
+      e2 e4 g |
+      f2 d4 f4 |
+      e2 e4 d |
+      cis e a g |
+      f e d c ~ |
+      c b g' f |
+      e d c cis |
+      d2-3 dis-4 |
+      e2 e4 d-4 |
+      c e2 c4 |
+      b e2 d4 |
+      c e2 c4 |
+      b e c e |
+      b e c e |
+      b2 e2 |
+      f2 g4 c4 |
+    }
+  }
+  bass = \relative c' {
+    \partial 2 r2 |
+    <g' b>2 d'2 |
+    c4 g a-2 g |
+    f-3 d g f-3 |
+    e2-2 r2 |%5
+    <g b> d' |
+    c a4 g |
+    f d g f |
+    e2 |
+    c'4 g |
+    b g b g |
+    c g c g-4 |
+    g e g e |
+    c' g c bes |
+    a2-1 a,2 |
+    d4 e f aes |
+    g2 b, |
+    c4 d e2 |
+    f4 a f a |
+    <e gis> e,2 e'4 |
+    a e a e |
+    gis e gis e |
+    a4 e a e |
+    gis4 e a e |
+    gis4 e a e |
+    gis2 <e gis> |
+    <g d c'>2
+  }
+  music = {
+    <<
+    \override Staff.NoteCollision #'merge-differently-headed = ##t
+    \context Voice = "1" { \voiceOne \melody }
+    \context Voice = "2" { \voiceTwo \bass }
+    >>
+  }
+  \score {
+    \new Staff \music
+    \layout { }
+  }
+\end{lilypond}
+
+\begin{lilypond}
+  melody = \relative c'' {
+    c,8-3\rightHandFinger #1 e-2\rightHandFinger #2 d\rightHandFinger #1 f-3\rightHandFinger #2 e-2\rightHandFinger #1 g\rightHandFinger #2 f\rightHandFinger #1 a\rightHandFinger #2 |
+    g-0 b-0 a-2 c-1 b-0 d-4 c-1 e |
+    d-4 e c-1 d-4 b-0 c a b |
+    g a f g e f d e |
+    c4 r4 <e c'> r4 |
+  }
+  music = {
+    <<
+    \override Staff.NoteCollision #'merge-differently-headed = ##t
+    \context Voice = "1" { \voiceOne \melody }
+    >>
+  }
+  \score {
+    \new Staff \music
+    \layout { }
+  }
+\end{lilypond}
+
+\begin{lilypond}
+  melody = \relative c'' {
+    \time 3/4
+    c8-1 e g, c e,-2 g\rightHandFinger #2 |
+    f a a d d f\rightHandFinger #2 |
+    d, g g b b g |
+    e g g c c e |
+    c e g, c e, g |
+    f a a d d f |
+    e g g b b g |
+  }
+  music = {
+    <<
+    \override Staff.NoteCollision #'merge-differently-headed = ##t
+    \context Voice = "1" { \voiceOne \melody }
+    >>
+  }
+  \score {
+    \new Staff \music
+    \layout { }
+  }
+\end{lilypond}
+
+\end{document}
